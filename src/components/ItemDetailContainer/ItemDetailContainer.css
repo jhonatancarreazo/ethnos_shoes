@@ -1,0 +1,17 @@
+
+.spinner__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.spinner__container div{
+    height: auto;
+    margin-top: 3%;
+}
+
+.spinner__container div > img{
+    height: 300px;
+}

@@ -1,0 +1,14 @@
+.httpresponse {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 10%;
+    max-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imghttpresponse{
+    width: 100%;
+    max-height: 800px;
+}
