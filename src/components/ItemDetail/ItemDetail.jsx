@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Card, CardHeader, CardBody, CardFooter, Flex, Box, Text, Heading, Image, Button , IconButton } from '@chakra-ui/react'
-
+import './ItemDetail.css'
 //import ItemCount from '../../ItemCount/ItemCount'
 import ItemCount from '../ItemCount/ItemCount'
 import { Link } from 'react-router-dom'
@@ -12,7 +12,11 @@ const ItemDetail = ({categoria, descripcion, img, nombre, precio, stock}) => {
     }
 
   return (
-        <Card maxW='md' display="flex" alignItems="center" max-height="40%">
+        <Card maxW='md' display="flex" alignItems="center" marginTop='2%' _hover={{
+            background: "pink.300",
+            color: "white",
+            cursor: "pointer",
+          }}>
         <CardHeader>
             <Flex spacing='4'>
             <Flex flex='1' gap='2' alignItems='center' flexWrap='wrap'>
@@ -37,10 +41,14 @@ const ItemDetail = ({categoria, descripcion, img, nombre, precio, stock}) => {
             Stock disponible: {stock}
             </Text>
         </CardBody>
-        <Image
+        <Image height='500px'
             objectFit='cover'
             src={img}
-            alt='Chakra UI'
+            alt={nombre}
+            _hover={{
+                width: "100%",
+                transition: "width 0.3s ease-in-out",
+              }}
         />
          <Text marginTop='10px'>
             ${precio}

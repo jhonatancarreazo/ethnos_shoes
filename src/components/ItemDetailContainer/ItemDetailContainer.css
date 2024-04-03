@@ -3,15 +3,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url('../assets/blob-scene-haikei.svg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
 }
 
-
-
-.spinner__container div{
-    height: auto;
-    margin-top: 3%;
-}
-
-.spinner__container div > img{
-    height: 300px;
-}

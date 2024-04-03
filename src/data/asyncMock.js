@@ -231,32 +231,48 @@ const productos = [
       },
     ];
 
+// Función para obtener todos los productos
 export const getProducts = () => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(productos);
-          }, 2000);
-    });
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(productos);
+    }, 2000);
+  });
 };
 
+// Función para filtrar productos por categoría
 export const getProductsByCategory = (category) => {
-    return new Promise((resolve) => {
-        const productosFiltrados = productos.filter(
-            (el) => el.categoria == category
-        );
-        setTimeout(() => {
-            resolve(productosFiltrados);
-          }, 2000);
-    });
+  return new Promise((resolve) => {
+    // Filtrar los productos por categoría
+    const productosFiltrados = productos.filter(
+      (el) => el.categoria === category
+    );
+    setTimeout(() => {
+      resolve(productosFiltrados);
+    }, 2000);
+  });
 };
 
+// Función para obtener un producto por su ID
 export const getProductById = (id) => {
-    return new Promise((resolve) => {
-        const productoFiltrado = productos.find(
-            (el) => el.id == parseInt(id)
-        );
+  return new Promise((resolve, reject) => {
+    // Validar si el ID es un número
+    if (isNaN(id)) {
+      reject(new Error("El ID debe ser un número."));
+    } else {
+      // Buscar el producto por su ID
+      const productoFiltrado = productos.find(
+        (el) => el.id === parseInt(id)
+      );
+      // Si el producto no existe, rechazar la promesa
+      if (!productoFiltrado) {
+        reject(new Error("Producto no encontrado."));
+        
+      } else {
         setTimeout(() => {
-            resolve(productoFiltrado);
-          }, 2000);
-    });
+          resolve(productoFiltrado);
+        }, 2000);
+      }
+    }
+  });
 };

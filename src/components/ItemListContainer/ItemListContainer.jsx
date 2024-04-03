@@ -1,52 +1,55 @@
 import React, { useEffect, useState } from 'react';
-//import useProductData from '../../hooks/useProductData';
 import ItemList from '../ItemList/ItemList';
 import { getProducts, getProductsByCategory } from '../../data/asyncMock';
 import { useParams } from 'react-router-dom';
-import { Spinner } from '@chakra-ui/react'
+import { Flex, Spinner } from '@chakra-ui/react';
 
+const ItemListContainer = ({ title }) => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); // Nuevo estado para manejar errores
+  const { categoryId } = useParams();
 
-const ItemListContainer = ({title}) => {
-  const [ data, setData ] = useState([])
-  const [ loading, setLoading ] = useState(true)
-  const { categoryId } = useParams()
-  
   useEffect(() => {
-    setLoading(true)
-    const dataProducts = categoryId ? getProductsByCategory(categoryId) : getProducts()
-    dataProducts
-      .then((el) => setData(el))
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false))
-  },[categoryId])
+    setLoading(true);
+    const fetchData = async () => {
+      try {
+        const newData = categoryId ? await getProductsByCategory(categoryId) : await getProducts();
+        setData(newData);
+      } catch (error) {
+        setError(error.message); // Almacenar el mensaje de error en el estado
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [categoryId]);
 
-  console.log(data);
   return (
     <div className='tags'>
-      {
-        loading ? 
-        <Spinner
-          thickness='10px'
-          speed='0.65s'
-          emptyColor='gray.200'
-          color='pink.500'
-          size='xl'
-          display='flex'
-          flexDirection='column'
-          margin='0 auto'
-          marginTop='40vh'
-        /> : 
+      {loading ? (
+        <Flex justifyContent='center' alignItems='center' height='100vh'>
+          <Spinner
+            thickness='10px'
+            speed='0.65s'
+            emptyColor='gray.200'
+            color='pink.500'
+            size='xl'
+            margin='0 auto'
+          />
+        </Flex>
+      ) : error ? ( // Mostrar error si está presente
+        <div className='error-message'>{error}</div>
+      ) : (
         <>
           <h1>{title}</h1>
-          <ItemList data={data} className="tag__item"/>
-          
+          <ItemList data={data} className='tag__item' />
         </>
-      }
+      )}
     </div>
-  )
-}
+  );
+};
 
 
 
-
-export default ItemListContainer
+export default ItemListContainer;
