@@ -24,14 +24,6 @@ Ecomerce usando react js, chackra UI
 ## Estructura de Carpetas
 ```
 ethnos_shoes
-├─ .eslintrc.cjs
-├─ .git
-│  ├─ COMMIT_EDITMSG
-│  ├─ FETCH_HEAD
-│  ├─ HEAD
-│  ├─ branches
-│  ├─ config
-│  ├─ description
 │  ├─ hooks
 │  │  ├─ applypatch-msg.sample
 │  │  ├─ commit-msg.sample
@@ -354,5 +346,3 @@ Si quieres contribuir a este proyecto, sigue los siguientes pasos:
 Este proyecto está bajo la [Licencia MIT](https://opensource.org/licenses/MIT).
 
 ---
-
-
