@@ -4,7 +4,7 @@ Ecomerce usando react js, chackra UI
 
 ## Instalación
 
-1. Clona este repositorio en tu máquina local.
+1. Clona este repositorio en tu máquina local. `git clone https://github.com/jhonatancarreazo/ethnos_shoes.git`
 2. Abre una terminal y navega hasta la carpeta del proyecto.
 3. Ejecuta el comando `npm install` para instalar todas las dependencias.
 
